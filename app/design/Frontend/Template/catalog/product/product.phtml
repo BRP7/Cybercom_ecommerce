@@ -1,0 +1,87 @@
+
+
+<div class="contain single-product">
+    <?php foreach ($this->showList() as $product) { ?>
+        <div class="cost">
+            <div class="column">
+                <div class="common">
+                    <img src="<?php echo Mage::getImagePath("images/" . $product->getImageLink()) ?>" alt="" id="Productimg"
+                        class="product-img-show">
+                </div>
+                <!-- <div class="small-img-cost">
+                    <div class="small-img-col">
+                        <img src="<?php echo Mage::getImagePath("banner/gallery-1.jpg") ?>" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="<?php echo Mage::getImagePath("banner/gallery-2.jpg") ?>" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="<?php echo Mage::getImagePath("banner/gallery-3.jpg") ?>" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="<?php echo Mage::getImagePath("banner/gallery-4.jpg") ?>" width="100%" class="small-img">
+                    </div>
+                </div> -->
+            </div>
+            <div class="line-vertical"></div>
+            <div class="column">
+                <!-- <p>Furnitur</p> -->
+                <h1>
+                    <?php echo $product->getName(); ?>
+                </h1>
+                <h4>
+                    <?php echo "₹" . $product->getPrice() ?>
+                </h4>
+                <!-- <select>
+                    <option hidden>Select Size</option>
+                    <option>XXL</option>
+                    <option>XL</option>
+                    <option>Large</option>
+                    <option>Medium</option>
+                    <option>Small</option>
+                </select>
+
+                <select>
+                    <option hidden>Color</option>
+                    <option>Black</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>White</option>
+                    <option>Green</option>
+                </select> -->
+
+                <form action="<?php echo $this->getUrl('sales/quote/add/') ?>" method="post">
+                    <input type="text" name="cart[product_id]" value="<?php echo $product->getProductId() ?>" hidden>
+                    <input type="number" value="1" min="1" max="<?php echo $product->getStock() ?>" name="cart[qty]">
+                    <button type="submit" name="Submit" value="Add To cart" class="add-btn">Add To cart</button>
+                </form>
+                <h3>Product Details</h3>
+                <br>
+                <p>
+                    <?php echo $product->getDescription(); ?>
+                </p>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+<br>
+<br>
+<br>
+
+<script>
+    var Productimg = document.getElementById("Productimg");
+    var SmallImg = document.getElementsByClassName("small-img");
+
+    SmallImg[0].onclick = function () {
+        Productimg.src = SmallImg[0].src;
+    }
+    SmallImg[1].onclick = function () {
+        Productimg.src = SmallImg[1].src;
+    }
+    SmallImg[2].onclick = function () {
+        Productimg.src = SmallImg[2].src;
+    }
+    SmallImg[3].onclick = function () {
+        Productimg.src = SmallImg[3].src;
+    }
+</script>

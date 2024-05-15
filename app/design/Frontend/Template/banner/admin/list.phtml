@@ -1,0 +1,54 @@
+<div>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="add">
+                <h2 class="h3 mb-3 text-black">Banner Information</h2>
+                <a href='<?php echo $this->getUrl('admin/banner/form') ?>'>
+                    <button class="add_btn">Add</button>
+                </a>
+            </div>
+            <div class="site-blocks-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="product-thumbnail">Id</th>
+                            <th class="product-name">Image</th>
+                            <th class="product-price">Status</th>
+                            <th class="product-price">UPDATE</th>
+                            <th class="product-quantity">DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Data fetch by ajax request -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        output = "";
+        $.ajax({
+            url: "<?php echo $this->getUrl('admin/banner/banner')?>",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    output += "<tr><td>" + data[i].banner_id +"</td>";
+                    output += "<td><h2 class='h5 text-black'>" + data[i].banner_image + "</h2></td>";
+                    output += "<td>" + data[i].status + "</td>";
+                    output += "<td>" + "<a href='<?php echo $this->getUrl('admin/banner/form/') . '?id=' ?>" + data[i].banner_id + "'><button class='upd'>Edit</button></a ></td>";
+                    output += "<td>" + "<a href='<?php echo $this->getUrl('admin/banner/delete/') . '?id=' ?>" + data[i].banner_id + "'><button class='del'>Delete</button></a ></td></tr>";
+                }
+                $("#tbody").html(output);
+            },
+            error: function(xhr, status, error){
+                console.log(xhr.responseText);
+            }
+        });
+    });
+    // showData();
+</script>

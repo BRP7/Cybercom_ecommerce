@@ -1,0 +1,26 @@
+<?php
+$data = $this->getBrand();
+?>
+<div class="box">
+    <div class="formContainer">
+        <div class="title">Brand Information</div>
+        <div class="content">
+            <form action="<?php echo $this->getUrl('brand/index/save') ?>" method="post">
+
+                <input type="hidden" placeholder="Enter Brand ID" id="brand_id" name="brand[brand_id]"
+                    value="<?php echo $data->getBrandId() ?>">
+
+                <div class="input-box">
+                    <span class="details" for="name">Name</span>
+                    <input type="text" placeholder="Enter Brand Name" id="name" name="brand[name]"
+                        value="<?php echo $data->getName() ?>" required>
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Submit">
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

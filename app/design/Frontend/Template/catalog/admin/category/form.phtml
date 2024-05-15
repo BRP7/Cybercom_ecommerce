@@ -1,0 +1,41 @@
+<div class="untree_co-section">
+    <div class="container" style="width: 800px;">
+        <form action="<?php echo $this->getUrl('admin/catalog_category/save') ?>" method="post">
+            <div class="row ">
+                <div>
+                    <h2 class="h3 mb-3 text-black">Category Form</h2>
+                    <div class="p-3 p-lg-5 border bg-white">
+                        <div class="form-group row">
+                            <input type="hidden" class="form-control" id="category_id"
+                                name="catalog_category[category_id]"
+                                value="<?php echo $this->getCategory()->getCategoryId() ?>">
+                            <div class="col-md-12">
+                                <label for="category_name" class="text-black">Category Name<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="category_name"
+                                    name="catalog_category[category_name]" placeholder="Enter Category Name"
+                                    value="<?php echo $this->getCategory()->getCategoryName() ?>" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="status" class="text-black">Status<span class="text-danger">*</span></label>
+                                <select id="status" class="form-control" name="catalog_category[status]">
+                                    <option value="" hidden>Select a status</option>
+                                    <option value="1" <?php echo (($this->getCategory()->getStatus() == "Enabled") ? 'selected' : '') ?>>
+                                        Enabled</option>
+                                    <option value="0" <?php echo (($this->getCategory()->getStatus() == "Disabled") ? 'selected' : '') ?>>
+                                        Disabled</option>
+                                </select>
+                            </div>
+                            <div style="margin-top: 30px;">
+                                <div class="form-group">
+                                    <input class="btn btn-black btn-lg py-3 btn-block" type="submit" name="Submit"
+                                        value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

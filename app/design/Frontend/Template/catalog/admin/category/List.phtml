@@ -1,0 +1,47 @@
+<div>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="add">
+                <h2 class="h3 mb-3 text-black">Category Information</h2>
+                <a href='<?php echo $this->getUrl('admin/catalog_category/form') ?>'>
+                    <button class="add_btn">Add</button>
+                </a>
+            </div>
+            <div class="site-blocks-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="product-thumbnail">Category Name</th>
+                            <th class="product-price">Status</th>
+                            <th class="product-price">UPDATE</th>
+                            <th class="product-quantity">DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->showList() as $catrgory): ?>
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <?php echo $catrgory->getCategoryName(); ?>
+                                </td>
+                                <td class="product-name">
+
+                                    <?php echo $catrgory->getStatus(); ?>
+
+                                </td>
+                                <td>
+                                    <a href="<?php echo $this->getUrl('admin/catalog_category/form/') ?>?id=<?php echo $catrgory->getCategoryId() ?>"
+                                        id="update"><button class='upd'>Edit</button></a>
+                                </td>
+                                <td>
+                                    <a href="<?php echo $this->getUrl('admin/catalog_category/delete/') ?>?id=<?php echo $catrgory->getCategoryId() ?>"
+                                        id="delete"><button class='del'>Delete</button></a>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

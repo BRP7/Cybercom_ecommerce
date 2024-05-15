@@ -1,0 +1,50 @@
+<div class="container relative">
+    <?php foreach ($this->orderIdd() as $_orderId) { ?>
+        <div class="content">
+            <div class="box-1">Order Id:
+                <?php echo $_orderId->getId() ?>
+                <form action="<?php echo $this->getUrl('sales/quote/cancelRequest') ?>" method="post">
+                    <input type="hidden" name="history[order_id]" value="<?php echo $_orderId->getId() ?>">
+                    <input type="hidden" name="history[to_status]" value="canceled Request">
+                    <input type="hidden" name="history[action_by]" value="customer">
+                    <button type="submit" class="cancel">
+                        <img src="<?php echo Mage::getImagePath("banner/remove.png"); ?>" alt="Image"
+                            class="img-fluid"></button>
+                </form>
+            </div>
+            <?php foreach ($this->items($_orderId->getId()) as $_item) { ?>
+
+                <div class="box-2">
+                    <div class="data">
+                        <div class="product-title">
+                            <div class="product-image">
+                                <img src="<?php echo Mage::getImagePath("/images/" . $this->product($_item->getProductId())->getImageLink()); ?>"
+                                    alt="Product Image">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="data">
+                        <div class="order-info">
+                            <div class="order-no">Order Number:
+                                <?php echo $_orderId->getOrderNumber() ?>
+                            </div>
+                            <div>Product Name:
+                            <?php  echo $this->product($_item->getProductId())->getName(); ?>
+                            </div>
+                            <div class="order-qty">Quantity:
+                                <?php echo $_item->getQty() ?>
+                            </div>
+                            <div class="order-price">Price: ₹
+                                <?php echo $this->product($_item->getProductId())->getPrice(); ?>
+                            </div>
+                            <div class="order-total">Total: ₹
+                                <?php echo $_orderId->getGrandTotal() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+</div>

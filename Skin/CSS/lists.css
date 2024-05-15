@@ -1,0 +1,169 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.container-list {
+    max-width: 900px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.column {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding-left: 15PX;
+    align-items: center;
+}
+.add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-list .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 3px;
+}
+
+.container-list .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 225px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.add_btn {
+    margin: 5px;
+    width: 6vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #51de3b;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add_btn:hover {
+    transform: scale(0.99);
+    background-color: #259b13;
+}
+
+.del {
+    margin: 5px;
+    width: 6vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: red;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.del:hover {
+    transform: scale(0.99);
+    background-color: #fa3c3caf;
+}
+
+.upd {
+    margin: 5px;
+    width: 6vw;
+    height: 3.5vh;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #1e90ff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upd:hover {
+    transform: scale(0.99);
+    background-color: #00bfff;
+}
+
+.button {
+    border: 1px solid black;
+    border-collapse: collapse;
+    align-items: center;
+}
+
+
+/*  Order List  */
+
+.content{
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    margin: 50px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.box-1{
+    display: flex;
+    padding-bottom: 25px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.box-2{
+    display: flex;
+    padding-bottom: 25px;
+    width: 100%;
+}
+.box-3{
+    display: flex;
+    padding-bottom: 25px;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cancel{
+  width: 4vw;
+  border: 0;
+  background: transparent;
+}
+.data{
+    display: flex;
+    align-items: center;
+}
+.product-image img{
+    width: 200px;
+    padding-right: 50px;
+}

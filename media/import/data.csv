@@ -1,0 +1,6 @@
+sku,name,color,size,description,image_link,link,category_id,price,mfr_cost,shipping_cost,total_cost,margin_percentage,min_price,status,stock
+sku1,product1,Blue,Small,T-shirt,product-7.jpg,no,1,100,10,20,130,15,90,0,1000
+sku2,product2,Red,Large,T-shirt,product-8.jpg,no,2,200,10,20,230,15,190,0,1000
+sku3,product3,Pink,Small,T-shirt,product-9.jpg,no,3,300,10,20,330,15,290,0,1000
+sku4,product4,Black,Large,T-shirt,product-10.jpg,no,4,400,10,20,430,15,390,0,1000
+sku5,product5,White,Small,T-shirt,product-11.jpg,no,5,500,10,20,530,15,490,0,1000

@@ -1,0 +1,53 @@
+<?php $data = $this->getTempconverter(); ?>
+<div class="box">
+    <div class="formContainer">
+        <div class="title">Temprature Converter</div>
+        <div class="content">
+            <form action=<?php echo $this->getUrl('admin/tempconverter_index/save') ?> method="post">
+                <div class="user-details">
+                    <input type="hidden" class="form-control" id="id" name="tempconverter[id]" placeholder="Enter ID"
+                        value="<?php echo $data->getId(); ?>">
+                    <input type="hidden" class="form-control" id="session_id" name="tempconverter[session_id]" placeholder="Enter session_id"
+                        value="<?php $this->session(); ?>">
+                    <div class="input-box">
+                        <label for="user_name" class="details">User Name</label>
+                        <input type="text" class="form-control" id="user_name" name="tempconverter[user_name]"
+                            placeholder="Enter User Name" value="<?php echo  $this->getUser(); ?>">
+                    </div>
+                    <div class="input-box">
+                        <label for="temprature" class="details">Temprature</label>
+                        <input type="text" class="form-control" id="temprature" name="tempconverter[temprature]"
+                            placeholder="Enter Temprature" value="<?php echo $data->getTemprature(); ?>">
+                    </div>
+                    <div class="input-box">
+                        <label for="unit" class="details">Unit</label>
+                        <select name="tempconverter[unit]" id="unit">
+                            <option>---select---</option>
+                            <option <?php echo (($data->getUnit() == "Celsius") ? 'selected' : '') ?> value="Celsius">
+                                Celsius</option>
+                            <option <?php echo (($data->getUnit() == "Farenheit") ? 'selected' : '') ?> value="Farenheit">
+                                Farenheit</option>
+                            <option <?php echo (($data->getUnit() == "Kelvin") ? 'selected' : '') ?> value="Kelvin">Kelvin
+                            </option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <label for="convert_unit" class="details">Convert Unit</label>
+                        <select name="tempconverter[convert_unit]" id="convert_unit">
+                            <option>---select---</option>
+                            <option <?php echo (($data->getConvertUnit() == "Celsius") ? 'selected' : '') ?>
+                                value="Celsius">Celsius</option>
+                            <option <?php echo (($data->getConvertUnit() == "Farenheit") ? 'selected' : '') ?>
+                                value="Farenheit">Farenheit</option>
+                            <option <?php echo (($data->getConvertUnit() == "Kelvin") ? 'selected' : '') ?>
+                                value="Kelvin">Kelvin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Submit" name="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+.checkoutContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.line-vertical{
+    border: 1px solid rgb(235, 235, 235);
+    height: 100h;
+}

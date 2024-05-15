@@ -1,0 +1,51 @@
+<div>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="add">
+                <h2 class="h3 mb-3 text-black">Product Information</h2>
+                <a href='<?php echo $this->getUrl('admin/catalog_product/form') ?>'>
+                    <button class="add_btn">Add</button>
+                </a>
+            </div>
+            <div class="site-blocks-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="product-thumbnail">Product Name</th>
+                            <th class="product-name">SKU</th>
+                            <th class="product-price">Category</th>
+                            <th class="product-price">UPDATE</th>
+                            <th class="product-quantity">DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->showList() as $product): ?>
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <?php echo $product->getName(); ?>
+                                </td>
+                                <td class="product-name">
+
+                                    <?php echo $product->getSku(); ?>
+
+                                </td>
+                                <td>
+                                    <?php echo $this->getselectedCategory($product); ?>
+                                </td>
+                                <td>
+                                    <a href="<?php echo $this->getUrl('admin/catalog_product/form/') ?>?id=<?php echo $product->getProductId() ?>"
+                                        id="update"><button class='upd'>Edit</button></a>
+                                </td>
+                                <td>
+                                    <a href="<?php echo $this->getUrl('admin/catalog_product/delete/') ?>?id=<?php echo $product->getProductId() ?>"
+                                        id="delete"><button class='del'>Delete</button></a>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

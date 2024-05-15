@@ -1,0 +1,40 @@
+<?php
+
+$brandCollection = Mage::getModel("brand/brand")->getCollection();
+?>
+<div class="box">
+<div class="container-list">
+    <div class="add">
+        <div class="title">Brand Information</div>
+        <a href='<?php echo $this->getUrl('brand/index/form/') ?>'>
+            <button class="add_btn">Add</button>
+        </a>
+    </div>
+    <table>
+        <tr>
+            <th width='200vh'>Brand Id</th>
+            <th width='200vh'>Brand Name</th>
+            <th width='200vh'>UPDATE</th>
+            <th width='200vh'>DELETE</th>
+        </tr>
+    <?php foreach ($brandCollection->getData() as $brand):?>
+        <tr>
+            <td class = 'column'>
+                <?php echo ($brand->getBrandId());
+                ?>
+            </td>
+            <td class = 'column'>
+                <?php echo ($brand->getName()); ?>
+            </td>
+            <td class = 'column'>
+                <a href="<?php echo $this->getUrl('brand/index/form/') . '?id=' . $brand->getBrandId();?>"id="update"><button class='upd'>Edit</button></a>
+            </td>
+            <td class = 'column'>
+                <a href="<?php echo $this->getUrl('brand/index/delete/') . '?id=' .$brand->getBrandId();?>"id="delete"><button class='del'>Delete</button></a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+    </table>
+</div>
+</body>
+</html>

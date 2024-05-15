@@ -1,0 +1,168 @@
+### Table: banner
+- **Primary Key**: `banner_id`
+- **Fields**:
+  - `banner_id`: INT(11)
+  - `banner_path`: VARCHAR(255)
+  - `status`: TINYINT(4)
+  - `show_on`: INT(11)
+
+### Table: catalog_category
+- **Primary Key**: `category_id`
+- **Fields**:
+  - `category_id`: INT(11)
+  - `category_name`: VARCHAR(255)
+  - `status`: TINYINT(4)
+
+### Table: catalog_product
+- **Primary Key**: `product_id`
+- **Fields**:
+  - `product_id`: INT(11)
+  - `sku`: VARCHAR(255)
+  - `name`: VARCHAR(255)
+  - `color`: VARCHAR(255)
+  - `size`: VARCHAR(255)
+  - `description`: TEXT
+  - `image_link`: VARCHAR(255)
+  - `link`: VARCHAR(255)
+  - `category_id`: INT(11) (Related to `catalog_category.category_id`)
+  - `price`: DECIMAL(12,2)
+  - `mfr_cost`: DECIMAL(12,2)
+  - `shipping_cost`: DECIMAL(12,2)
+  - `total_cost`: DECIMAL(12,2)
+  - `margin_percentage`: INT(11)
+  - `min_price`: DECIMAL(12,2)
+  - `status`: TINYINT(4)
+
+### Table: customer
+- **Primary Key**: `customer_id`
+- **Fields**:
+  - `customer_id`: INT(11)
+  - `customer_email`: VARCHAR(255)
+  - `first_name`: VARCHAR(255)
+  - `last_name`: VARCHAR(255)
+  - `password`: VARCHAR(225)
+
+### Table: customer_address
+- **Primary Key**: `address_id`
+- **Fields**:
+  - `address_id`: INT(11)
+  - `customer_id`: INT(11) (Related to `customer.customer_id`)
+  - `billing_address`: VARCHAR(255)
+  - `billing_city`: VARCHAR(255)
+  - `billing_region`: INT(11)
+  - `billing_country`: INT(11)
+  - `billing_phone`: VARCHAR(255)
+  - `shipping_address`: VARCHAR(255)
+  - `shipping_city`: VARCHAR(255)
+  - `shipping_region`: INT(11)
+  - `shipping_country`: INT(11)
+  - `shipping_phone`: VARCHAR(255)
+  - `default`: TINYINT(1)
+
+### Table: sales_order
+- **Primary Key**: `order_id`
+- **Fields**:
+  - `order_id`: INT(11)
+  - `order_number`: VARCHAR(255)
+  - `tax_percent`: INT(11)
+  - `grand_total`: DECIMAL(12,2)
+  - `payment_id`: INT(11) (Related to `sales_order_payment_method.payment_id`)
+  - `shipping_id`: INT(11) (Related to `sales_order_shipping_method.shipping_id`)
+
+### Table: sales_order_customer
+- **Primary Key**: `order_customer_id`
+- **Fields**:
+  - `order_customer_id`: INT(11)
+  - `order_id`: INT(11) (Related to `sales_order.order_id`)
+  - `customer_id`: INT(11) (Related to `customer.customer_id`)
+  - `email`: VARCHAR(255)
+  - `billing_address`: VARCHAR(255)
+  - `billing_city`: VARCHAR(255)
+  - `billing_region`: INT(11)
+  - `billing_country`: INT(11)
+  - `billing_phone`: VARCHAR(255)
+  - `shipping_address`: VARCHAR(255)
+  - `shipping_city`: VARCHAR(255)
+  - `shipping_region`: INT(11)
+  - `shipping_country`: INT(11)
+  - `shipping_phone`: VARCHAR(255)
+
+### Table: sales_order_item
+- **Primary Key**: `item_id`
+- **Fields**:
+  - `item_id`: INT(11)
+  - `order_id`: INT(11) (Related to `sales_order.order_id`)
+  - `product_id`: INT(11) (Related to `catalog_product.product_id`)
+  - `price`: DECIMAL(12,2)
+  - `qty`: INT(11)
+  - `row_total`: DECIMAL(12,2)
+  - `product_name`: VARCHAR(255)
+  - `product_color`: VARCHAR(255)
+
+### Table: sales_order_payment_method
+- **Primary Key**: `payment_id`
+- **Fields**:
+  - `payment_id`: INT(11)
+  - `order_id`: INT(11) (Related to `sales_order.order_id`)
+  - `payment_method`: VARCHAR(255)
+  - `card_number`: VARCHAR(255)
+
+### Table: sales_order_shipping_method
+- **Primary Key**: `shipping_id`
+- **Fields**:
+  - `shipping_id`: INT(11)
+  - `order_id`: INT(11) (Related to `sales_order.order_id`)
+  - `shipping_method`: VARCHAR(255)
+
+### Table: sales_quote
+- **Primary Key**: `quote_id`
+- **Fields**:
+  - `quote_id`: INT(11)
+  - `tax_percent`: INT(11)
+  - `grand_total`: DECIMAL(12,2)
+  - `order_id`: INT(11) (Related to `sales_order.order_id`)
+  - `payment_id`: INT(11) (Related to `sales_order_payment_method.payment_id`)
+  - `shipping_id`: INT(11) (Related to `sales_order_shipping_method.shipping_id`)
+
+### Table: sales_quote_customer
+- **Primary Key**: `quote_customer_id`
+- **Fields**:
+  - `quote_customer_id`: INT(11)
+  - `quote_id`: INT(11) (Related to `sales_quote.quote_id`)
+  - `customer_id`: INT(11) (Related to `customer.customer_id`)
+  - `email`: VARCHAR(255)
+  - `billing_address`: VARCHAR(255)
+  - `billing_city`: VARCHAR(255)
+  - `billing_region`: INT(11)
+  - `billing_country`: INT(11)
+  - `billing_phone`: VARCHAR(255)
+  - `shipping_address`: VARCHAR(255)
+  - `shipping_city`: VARCHAR(255)
+  - `shipping_region`: INT(11)
+  - `shipping_country`: INT(11)
+  - `shipping_phone`: VARCHAR(255)
+
+### Table: sales_quote_item
+- **Primary Key**: `item_id`
+- **Fields**:
+  - `item_id`: INT(11)
+  - `quote_id`: INT(11) (Related to `sales_quote.quote_id`)
+  - `product_id`: INT(11) (Related to `catalog_product.product_id`)
+  - `price`: DECIMAL(12,2)
+  - `qty`: INT(11)
+  - `row_total`: DECIMAL(12,2)
+
+### Table: sales_quote_payment_method
+- **Primary Key**: `payment_id`
+- **Fields**:
+  - `payment_id`: INT(11)
+  - `quote_id`: INT(11) (Related to `sales_quote.quote_id`)
+  - `payment_method`: VARCHAR(255)
+  - `card_number`: VARCHAR(255)
+
+### Table: sales_quote_shipping_method
+- **Primary Key**: `shipping_id`
+- **Fields**:
+  - `shipping_id`: INT(11)
+  - `quote_id`: INT(11) (Related to `sales_quote.quote_id`)
+  - `shipping_method`: VARCHAR(255)

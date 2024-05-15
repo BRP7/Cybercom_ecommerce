@@ -1,0 +1,144 @@
+<div class="container" style="width: 800px; margin-top: 3vh; margin-bottom: 3vh;">
+    <form action="<?php echo $this->getUrl('admin/catalog_product/save'); ?>" method="post">
+        <div class="row ">
+            <div>
+                <h2 class="h3 mb-3 text-black">Product Form</h2>
+                <div class="p-3 p-lg-5 border bg-white">
+                    <div class="form-group row">
+
+                        <input type="hidden" class="form-control" id="product_id" name="catalog_product[product_id]"
+                            placeholder="Enter Product Id" value="<?php echo $this->getProduct()->getProductId() ?>" required>
+
+                        <div class="col-md-6">
+                            <label for="sku" class="text-black">SKU<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="sku" name="catalog_product[sku]"
+                                placeholder="Enter SKU" value="<?php echo $this->getProduct()->getSku() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name" class="text-black">Product Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" name="catalog_product[name]"
+                                placeholder="Enter Product Name" value="<?php echo $this->getProduct()->getName() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="color" class="text-black">Color<span class="text-danger">*</span></label>
+                            <select id="color" class="form-control" name="catalog_product[color]">
+                                <option value="" hidden>Select a Color</option>
+                                <?php
+                                $color = ["Red", "Green", "Pink", "Blue", "Gray", "Black", "White"];
+
+                                foreach ($color as $col) {
+                                    echo '<option value="' . $col . '" ' . (($this->getProduct()->getColor() == $col) ? 'selected' : '') . '>' . $col . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 10px;">
+
+                            <label for="small_type" class="text-black">Size<span class="text-danger">*</span></label>
+                            <br>
+                            <input type="radio" id="small_type" name="catalog_product[size]" class="form-check-input"
+                                value="Small" <?php echo (($this->getProduct()->getSize() == "Small") ? 'Checked' : '') ?>
+                                style="margin-top: 7px;">
+                            <label for="small_type" class="form-check-label">Small</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="medium_type" name="catalog_product[size]" class="form-check-input"
+                                value="Medium" <?php echo (($this->getProduct()->getSize() == "Medium") ? 'Checked' : '') ?>
+                                style="margin-top: 7px;">
+                            <label for="medium_type" class="form-check-label">Medium</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="large_type" name="catalog_product[size]" class="form-check-input"
+                                value="Large" <?php echo (($this->getProduct()->getSize() == "Large") ? 'Checked' : '') ?>
+                                style="margin-top: 7px;">
+                            <label for="large_type" class="form-check-label">Large</label>
+
+                        </div>
+                        <div class="col-md-12">
+                            <label for="description" class="text-black">Description<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="description" name="catalog_product[description]"
+                                placeholder="Enter Description" value="<?php echo $this->getProduct()->getDescription() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="image_link" class="text-black">Image Link<span
+                                    class="text-danger">*</span></label>
+                            <input type="file" class="form-control" id="image_link" name="catalog_product[image_link]"
+                                value="<?php echo $this->getProduct()->getImageLink() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="link" class="text-black">Link<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="link" name="catalog_product[link]"
+                                placeholder="Enter Link" value="<?php echo $this->getProduct()->getLink() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="category_id" class="text-black">category<span
+                                    class="text-danger">*</span></label>
+                                    
+                            <select id="category_id" class="form-control" name="catalog_product[category_id]">
+                                <option value="" hidden>Select a category</option>
+                                <?php
+                                foreach ($this->getCategory() as $cat => $val) {
+                                    echo '<option value="' . $cat . '"' . (($this->getselectedCategory() == $val) ? 'selected' : '') . '>' . $val . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="price" class="text-black">Price<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="price" name="catalog_product[price]"
+                                placeholder="Enter Price" value="<?php echo $this->getProduct()->getPrice() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mfr_cost" class="text-black"> Manufacturer Cost<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="mfr_cost" name="catalog_product[mfr_cost]"
+                                placeholder="Enter Manufacturer Cost" value="<?php echo $this->getProduct()->getMfrCost() ?>"
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_cost" class="text-black">Shipping Cost<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_cost"
+                                name="catalog_product[shipping_cost]" placeholder="Enter Shipping Cost"
+                                value="<?php echo $this->getProduct()->getShippingCost() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="total_cost" class="text-black">Total Cost<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="total_cost" name="catalog_product[total_cost]"
+                                placeholder="Enter otal Cost" value="<?php echo $this->getProduct()->getTotalCost() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="margin_percentage" class="text-black">Margin Percentage<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="margin_percentage"
+                                name="catalog_product[margin_percentage]" placeholder="Ente Margin Percentage"
+                                value="<?php echo $this->getProduct()->getMarginPercentage() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="min_price" class="text-black">MiniMum Price<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="min_price" name="catalog_product[min_price]"
+                                placeholder="Enter MiniMum Price" value="<?php echo $this->getProduct()->getMinPrice() ?>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="status" class="text-black">Status<span class="text-danger">*</span></label>
+                            <select id="status" class="form-control" name="catalog_product[status]">
+                                <option value="" hidden>Select a status</option>
+                                <option value="1" <?php echo (($this->getProduct()->getStatus() == "Enabled") ? 'selected' : '') ?>>
+                                    Enabled</option>
+                                <option value="0" <?php echo (($this->getProduct()->getStatus() == "Disabled") ? 'selected' : '') ?>>
+                                    Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <div class="form-group">
+                            <input class="btn btn-black btn-lg py-3 btn-block" type="submit" name="Submit"
+                                value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

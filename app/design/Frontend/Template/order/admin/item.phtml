@@ -1,0 +1,152 @@
+<h1 class="h3 text-black">
+    Order List
+</h1>
+
+<div class="">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="site-blocks-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="product-thumbnail">Image</th>
+                            <th class="product-name">Product</th>
+                            <th class="product-price">Price</th>
+                            <th class="product-quantity">Quantity</th>
+                            <th class="product-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $subTotal = 0;
+                        $taxnumber = 8;
+                        $tax = 0;
+                        $grandTotal = 0;
+                        foreach ($this->items() as $item) {
+                            $product = $this->product($item->getProductId());
+                            ?>
+                            <tr>
+                                <td class="product-thumbnail">
+                                    <img src="<?php echo Mage::getImagePath("images/" . $product->getImageLink()) ?>"
+                                        alt="Image" class="img-fluid">
+                                </td>
+                                <td class="product-name">
+                                    <h2 class="h6 text-black">
+                                        <?php echo $product->getName() ?>
+                                    </h2>
+                                </td>
+                                <td class="product-price">
+                                    <?php echo "₹" . $product->getPrice() ?>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="input-group mb-3 d-flex align-items-center quantity-container"
+                                        style="max-width: 100px;">
+                                        <input type="number" class="form-control text-center quantity-amount"
+                                            name="upd_cart[qty]" value="<?php echo $item->getQty(); ?>"
+                                            style="border-radius: 10px;" readonly>
+                                    </div>
+
+                                </td>
+                                <td class="product-total">
+                                    <?php echo "₹" . $item->getRowTotal() ?>
+                                </td>
+                            </tr>
+                            <?php
+
+                            $subTotal += $item->getRowTotal();
+                            if ($taxnumber) {
+                                $tax = round($subTotal / $taxnumber, 2);
+                                $grandTotal = $subTotal + $tax;
+                            }
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <?php foreach ($this->getAddressData() as $addValue): ?>
+                    <?php foreach ($this->getCustomerData($addValue->getCustomerId()) as $customerValue): ?>
+                        <h2 class="h5 text-black">
+                            Name:
+                            <label style="color: gray;">
+                                <?php echo $customerValue->getFirstName() . " " . $customerValue->getLastName() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            E-mail:
+                            <label style="color: gray;">
+                                <?php echo $customerValue->getCustomerEmail() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            Address :
+                            <label style="color: gray;">
+                                <?php echo $addValue->getBillingAddress() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            City :
+                            <label style="color: gray;">
+                                <?php echo $addValue->getBillingCity() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            Country :
+                            <label style="color: gray;">
+                                <?php echo $addValue->getBillingCountry() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            Region :
+                            <label style="color: gray;">
+                                <?php echo $addValue->getBillingRegion() ?>
+                            </label>
+                        </h2>
+                        <h2 class="h5 text-black">
+                            Phone No:
+                            <label style="color: gray;">
+                                <?php echo $addValue->getBillingPhone() ?>
+                            </label>
+                        </h2>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+            <div class="col-md-6 pl-5">
+                <div class="row justify-content-end">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12 text-right border-bottom mb-5">
+                                <h3 class="text-black h4 text-uppercase">Order Totals</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Subtotal</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">
+                                    <?php echo "₹" . $subTotal ?>
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <span class="text-black">Total</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">
+                                    <?php echo "₹" . $grandTotal ?>
+                                </strong>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

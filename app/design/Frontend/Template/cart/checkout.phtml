@@ -1,0 +1,305 @@
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Checkout</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+<div class="untree_co-section">
+    <div class="container">
+        <form action="<?php echo $this->getUrl('sales/quote/save') ?>" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-5 mb-md-0">
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Previous Address</h2>
+                            <?php if (!empty ($this->getAddressData())): ?>
+                                <?php foreach ($this->getAddressData() as $addValue): ?>
+                                    <div class="p-3 p-lg-3 border bg-white address-cards" data-json='{"customer":"<?php echo $addValue->getCustomerId(); ?>",
+                        "billing_address":"<?php echo $addValue->getBillingAddress(); ?>",
+                        "billing_city":"<?php echo $addValue->getBillingCity(); ?>",
+                        "billing_country":"<?php echo $addValue->getBillingCountry(); ?>",
+                        "billing_phone":"<?php echo $addValue->getBillingPhone(); ?>",
+                        "billing_region":"<?php echo $addValue->getBillingRegion(); ?>"}
+                        '>
+                                        <p>Id :
+                                            <?php echo $addValue->getCustomerId() ?>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Address :
+                                            <?php echo $addValue->getBillingAddress() ?>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            City :
+                                            <?php echo $addValue->getBillingCity() ?>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Country :
+                                            <?php echo $addValue->getBillingCountry() ?>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            Region :
+                                            <?php echo $addValue->getBillingRegion() ?>
+                                            Phone No:
+                                            <?php echo $addValue->getBillingPhone() ?>
+                                        </p>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+
+                    <h2 class="h3 mb-3 text-black">Billing Details</h2>
+                    <div class="p-3 p-lg-5 border bg-white">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="billing_address" class="text-black">Billing Address<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="billing_address"
+                                    name="checkout_customer[billing_address]" placeholder="Enter Billing Address"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="billing_city" class="text-black">Billing City<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="billing_city"
+                                    name="checkout_customer[billing_city]" placeholder="Enter Billing City" required>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label for="billing_region" class="text-black">Billing Region<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="billing_region"
+                                    name="checkout_customer[billing_region]" placeholder="Enter Billing Region"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="billing_country" class="text-black">Billing Country<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="billing_country"
+                                    name="checkout_customer[billing_country]" placeholder="Enter Billing Country"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="billing_phone" class="text-black">Billing Phone Nubmer<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="billing_phone"
+                                    name="checkout_customer[billing_phone]" placeholder="Enter Billing Phone Nubmer"
+                                    required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row shipping">
+                            <label for="same_as_billing" class="text-black"><input type="checkbox" value="1"
+                                    id="same_as_billing" onchange="copyBillingToShipping()"> Same as Billing...</label>
+                            <div class="col-md-12">
+                                <label for="shipping_address" class="text-black">Shipping Address<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shipping_address"
+                                    name="checkout_customer[shipping_address]" placeholder="Enter Shipping Address"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="shipping_city" class="text-black">Shipping City<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shipping_city"
+                                    name="checkout_customer[shipping_city]" placeholder="Enter Shipping City" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="shipping_region" class="text-black">Shipping Region<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shipping_region"
+                                    name="checkout_customer[shipping_region]" placeholder="Enter Shipping Region"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="shipping_country" class="text-black">Shipping Country<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shipping_country"
+                                    name="checkout_customer[shipping_country]" placeholder="Enter Shipping Country"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="shipping_phone" class="text-black">Shipping Phone Nubmer<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shipping_phone"
+                                    name="checkout_customer[shipping_phone]" placeholder="Enter Shipping Phone Nubmer"
+                                    required>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Your Order</h2>
+                            <div class="p-3 p-lg-5 border bg-white">
+                                <table class="table site-block-order-table mb-5">
+                                    <thead>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $subTotal = 0;
+                                        $taxnumber = 8;
+                                        $tax = 0;
+                                        $grandTotal = 0;
+                                        foreach ($this->getItemList()->getData() as $item) {
+                                            $productList = $this->getProductList($item->getProductId())->getData();
+                                            foreach ($productList as $product) {
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $product->getName() ?><strong class="mx-2">x</strong>
+                                                        <?php echo $item->getQty(); ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo "₹" . $item->getRowTotal() ?>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            $subTotal += $item->getRowTotal();
+                                            if ($taxnumber) {
+                                                $tax = round($subTotal / $taxnumber, 2);
+                                                $grandTotal = $subTotal + $tax;
+                                            }
+                                        }
+                                        ?>
+                                        <thead>
+                                        </thead>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
+                                            <td class="text-black">
+                                                <?php echo "₹" . $subTotal ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Tax</strong></td>
+                                            <td class="text-black">
+                                                <?php echo "₹" . $tax ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>
+                                                    <?php echo "₹" . $grandTotal ?>
+                                                </strong></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <div class="form-group">
+                                    <label for="payment_Method" class="text-black">Payment Mathod <span
+                                            class="text-danger">*</span></label>
+                                    <select id="payment_Method" class="form-control" name="payment[payment_method]"
+                                        onchange="toggleCardDetails()">
+                                        <option value="" hidden>Select a country</option>
+                                        <option value="COD">Cash on Delivery (COD)</option>
+                                        <option value="UPI">UPI</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                    </select>
+
+                                    <div class="form-group" id="cardDetails">
+                                        <div class="col-md-12">
+                                            <label for="card_number" class="text-black">Card Number<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="card_number"
+                                                name="payment[card_number]" placeholder="Enter Card Number">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="expiryDate" class="text-black">Expiry Date<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="expiryDate"
+                                                placeholder="Enter Card Expiry Date">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="cvv" class="text-black">CVV<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cvv"
+                                                placeholder="Enter Card CVV Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="shipping_method" class="text-black">Shipping Mathod <span
+                                                class="text-danger">*</span></label>
+                                        <select id="shipping_method" class="form-control"
+                                            name="shipping[shipping_method]">
+                                            <option value="" hidden>Select a country</option>
+                                            <option value="Exprase">Exprase</option>
+                                            <option value="Frade">Frade</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <input class="btn btn-black btn-lg py-3 btn-block" type="submit" name="submit"  value="Place Order">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.address-cards').each((i, e) => {
+        console.log($(e).attr('data-json'))
+        $(e).click(() => {
+            var _data = JSON.parse($(e).attr('data-json'))
+            for (var key in _data) {
+                if (_data.hasOwnProperty(key)) {
+                    $('#' + key).val(_data[key]);
+                }
+            }
+        });
+    })
+
+    function copyBillingToShipping() {
+        if (document.getElementById('same_as_billing').checked) {
+            document.getElementById('shipping_address').value = document.getElementById('billing_address').value;
+            document.getElementById('shipping_city').value = document.getElementById('billing_city').value;
+            document.getElementById('shipping_region').value = document.getElementById('billing_region').value;
+            document.getElementById('shipping_country').value = document.getElementById('billing_country').value;
+            document.getElementById('shipping_phone').value = document.getElementById('billing_phone').value;
+            document.getElementById('shipping_zip').value = document.getElementById('billing_zip').value;
+        } else {
+            // Clear shipping fields if checkbox is unchecked
+            document.getElementById('shipping_address').value = '';
+            document.getElementById('shipping_city').value = '';
+            document.getElementById('shipping_region').value = '';
+            document.getElementById('shipping_country').value = '';
+            document.getElementById('shipping_phone').value = '';
+            document.getElementById('shipping_zip').value = '';
+        }
+    }
+    
+    function toggleCardDetails() {
+        var paymentMethod = document.getElementById("payment_Method").value;
+        var cardDetails = document.getElementById("cardDetails");
+
+        if (paymentMethod === "Credit Card") {
+            cardDetails.style.display = "block";
+        } else {
+            cardDetails.style.display = "none";
+        }
+    }
+</script>

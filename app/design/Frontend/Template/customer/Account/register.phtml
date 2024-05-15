@@ -1,0 +1,110 @@
+<div class="container" style="width: 800px; margin-top: 3vh; margin-bottom: 3vh;">
+    <form action="<?php echo $this->getUrl('customer/account/save'); ?>" method="post">
+        <div class="row ">
+            <div>
+                <h2 class="h3 mb-3 text-black">Customer Register</h2>
+                <div class="p-3 p-lg-5 border bg-white">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="customer_email" class="text-black">E-mail<span
+                                    class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="customer_email" name="customer[customer_email]"
+                                placeholder="Enter E-mail" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="first_name" class="text-black">First Name<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="first_name" name="customer[first_name]"
+                                placeholder="Enter First Name" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_name" class="text-black">Last name<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="last_name" name="customer[last_name]"
+                                placeholder="Enter Last name" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="text-black">Password<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password" name="customer[password]"
+                                placeholder="Enter Password" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="billing_address" class="text-black">Billing Address<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="billing_address"
+                                name="customer[billing_address]" placeholder="Enter Billing Address" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="billing_city" class="text-black">Billing City<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="billing_city" name="customer[billing_city]"
+                                placeholder="Enter Billing City" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="billing_region" class="text-black">Billing Region<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="billing_region" name="customer[billing_region]"
+                                placeholder="Enter Billing Region" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="billing_country" class="text-black">Billing Country<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="billing_country"
+                                name="customer[billing_country]" placeholder="Enter Billing Country" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="billing_phone" class="text-black">Billing Phone Number<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="billing_phone" name="customer[billing_phone]"
+                                placeholder="Enter Billing Phone Number" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_address" class="text-black">Shipping Address<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_address"
+                                name="customer[shipping_address]" placeholder="Enter Shipping Address" value=""
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_city" class="text-black">Shipping City<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_city" name="customer[shipping_city]"
+                                placeholder="Enter Shipping City" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_region" class="text-black">Shipping Region<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_region"
+                                name="customer[shipping_region]" placeholder="Enter Shipping Region" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_country" class="text-black">Shipping Country<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_country"
+                                name="customer[shipping_country]" placeholder="Enter Shipping Country" value=""
+                                required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shipping_phone" class="text-black">Shipping Phone Number<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shipping_phone" name="customer[shipping_phone]"
+                                placeholder="Enter Shipping Phone Number" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="default" class="text-black">Default<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="default" name="customer[default]"
+                                placeholder="Enter Default" value="" required>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <div class="form-group">
+                            <input class="btn btn-black btn-lg py-3 btn-block" type="submit" name="Submit"
+                                value="Register">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <a class="btn btn-black btn-lg py-3 btn-block" href="<?php echo $this->getUrl('customer/account/login');?>">already have an account</a>
+</div>
